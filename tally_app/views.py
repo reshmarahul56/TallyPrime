@@ -26,9 +26,7 @@ def voucher(request):
 def vouchpage(request):
     return render(request, 'vouchpage.html')
 
-def update_voucher(request,pk):
-    vch=VoucherModels.objects.get(id=pk)
-    return render(request,'update_voucher.html',{'i':vch})
+
 
 def load_create_vouchertyp(request):
     return render(request,'load_create_vouchertyp.html')
@@ -43,12 +41,12 @@ def create_voucher(request):
         abbre = request.POST['abbre']
         activ_vou_typ = request.POST['avtyp']  # bool
         meth_vou_num = request.POST['meth_vou_num']
-        useadv = request.POST.get('useadvc', False)
+        
         prvtdp = request.POST.get('prvtdp', False)
         use_effct_date = request.POST['uefftdate']  # bool
-        allow_zero_trans = request.POST['allow_zero_trans']  # bool
+        
         allow_naration_in_vou = request.POST['allow_naration_in_vou']  # bool
-        optional = request.POST['optional'] 
+         
         provide_narr = request.POST['providenr']  # bool
         print = request.POST['print']  # bool
 
@@ -65,11 +63,9 @@ def create_voucher(request):
             active_this_voucher_type=activ_vou_typ,
             method_voucher_numbering=meth_vou_num,
             use_effective_date=use_effct_date,
-            use_adv_conf = useadv,
             prvnt_duplictes =prvtdp,
-            allow_zero_value_trns=allow_zero_trans,
+            
             allow_naration_in_voucher=allow_naration_in_vou,
-            make_optional=optional,
             provide_naration=provide_narr,
             print_voucher=print,
 
@@ -79,6 +75,10 @@ def create_voucher(request):
         return redirect('load_create_vouchertyp')
 
     return render(request, 'load_create_vouchertyp')
+
+def update_voucher(request,pk):
+    vch=VoucherModels.objects.get(id=pk)
+    return render(request,'update_voucher.html',{'i':vch})
 
 
 def save_voucher(request,pk):
@@ -91,8 +91,7 @@ def save_voucher(request,pk):
         vch.active_this_voucher_type = request.POST.get('avtyp')
         vch.method_voucher_numbering = request.POST.get('meth_vou_num')
         vch.use_effective_date = request.POST.get('uefftdate')
-        vch.allow_zero_value_trns = request.POST.get('allow_zero_trans')
-        vch.make_optional = request.POST.get('optional')
+        
         vch.allow_naration_in_voucher = request.POST.get('allow_naration_in_vou')
         vch.provide_naration = request.POST.get('providenr')
         vch.print_voucher = request.POST.get('print')
@@ -100,3 +99,51 @@ def save_voucher(request,pk):
         vch.save()
         return redirect('voucher')
     return render(request, 'update_voucher.html',)
+
+def costcat(request):
+    cost=CostCategory.objects.all()
+    context={'cost':cost,}
+
+    return render(request, 'costcat.html',context)
+
+def costcentr(request):
+    centr=Costcentr.objects.all()
+    context={'centr':centr,}
+
+    return render(request, 'costcentr.html',context)
+
+def primary(request,pk):
+    cost=CostCategory.objects.get(id=pk)
+    return render(request, 'primarycost.html',{'i':cost})
+
+def update_cost(request,pk):
+    if request.method=='POST':
+        cost =CostCategory.objects.get(id=pk)
+        cost.name = request.POST.get('a')
+        cost.alias = request.POST.get('b')
+        cost.revenue = request.POST.get('c')
+        cost.nonrevenue = request.POST.get('d')
+        
+        
+        cost.save()
+        return redirect('costcat')
+    return render(request, 'primarycost.html',)
+
+
+def centr(request,pk):
+    centr=Costcentr.objects.get(id=pk)
+    return render(request, 'update_costcentr.html',{'i':centr})
+
+
+def update_centr(request,pk):
+    if request.method=='POST':
+        centr =Costcentr.objects.get(id=pk)
+        centr.name = request.POST.get('name')
+        centr.alias = request.POST.get('alias')
+        centr.under = request.POST.get('under')
+        centr.emply = request.POST.get('emply')
+        
+        
+        centr.save()
+        return redirect('costcentr')
+    return render(request, 'update_costcentr.html',)

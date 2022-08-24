@@ -12,12 +12,12 @@
 
   <div class="m-0">
     <h6 style="" class="bg-info text-light p-2 m-0 text-center">Voucher Type Alteration(Secondary)</h6>
-            <form class="p-5" style="background-color:rgba(0,0,0,.4);" action ="/update_voucher/{{i.id}}">
+            <form class="p-5" style="background-color:rgba(0,0,0,.4);">
                 
                 <div class="p-3">
                 <div class="row container-fluid  p-2 m-0">
                     <div class="col-sm-2 m-0 p-0"> <label for="a">Name</label></div>
-                    <div class="col-sm-3 m-0 p-0"><input type="text" class="form-control" id="a" value="{{i.voucher_name}}"></div>
+                    <div class="col-sm-3 m-0 p-0"><input type="text" class="form-control" id="a" placeholder=""></div>
                     <div class="col-sm-7 m-0 p-0"></div>
                 </div>
                 <div class="row container-fluid  p-2 m-0">
@@ -41,7 +41,7 @@
 
                         <div class="row container-fluid  p-2">
                             <div class="col-sm-6 m-0 p-0"> <label for="c">Select type of voucher</label></div>
-                            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="c" placeholder="" value="{{i.voucher_name}}"></div>
+                            <div class="col-sm-6 m-0 p-0"><input type="text" class="form-control" id="c" placeholder=""></div>
                         </div>
 
                         <div class="row container-fluid  p-2">
@@ -79,27 +79,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row container-fluid  p-2">
-                            <div class="col-sm-6 m-0 p-0"> <label for="h">Allow zero valued transactions</label></div>
-                            <div class="col-sm-6 m-0 p-0">
-                                <select name="zeroval" id="" class="form-control">
-                                    <option value="no">No</option>
-                                    <option value="yes">Yes</option> 
-                                   
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row container-fluid  p-2">
-                            <div class="col-sm-6 m-0 p-0"> <label for="i">Make voucher optional by default</label></div>
-                            <div class="col-sm-6 m-0 p-0">
-                                <select name="optional" id="i" class="form-control">
-                                    <option value="no">No</option>
-                                    <option value="yes">Yes</option> 
-                                   
-                                </select>
-                            </div>
-                        </div>
-
+                       
                         <div class="row container-fluid  p-2">
                             <div class="col-sm-6 m-0 p-0"> <label for="j">Allow narration in voucher</label></div>
                             <div class="col-sm-6 m-0 p-0">

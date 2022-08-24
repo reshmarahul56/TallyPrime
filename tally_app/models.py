@@ -14,3 +14,16 @@ class VoucherModels(models.Model):
     provide_naration =  models.CharField(max_length=225)
     print_voucher = models.CharField(max_length=225)
 
+
+class CostCategory(models.Model):
+    name=models.CharField(max_length=225)
+    alias=models.CharField(max_length=225)
+    revenue=models.CharField(max_length=225)
+    nonrevenue=models.CharField(max_length=225)
+
+class Costcentr(models.Model):
+    name=models.CharField(max_length=225)
+    alias=models.CharField(max_length=225)
+    under=models.CharField(max_length=225)
+    emply=models.CharField(max_length=225)
+
