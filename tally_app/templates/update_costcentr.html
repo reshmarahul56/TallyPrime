@@ -91,51 +91,45 @@
                 <a href="javascript:history.go(-1);" class="close">+</a>
                 <h6 style="background-color:rgb(103, 175, 220) ; color:white; text-align: center; padding: 9px 0; width:100%;">Cost Category Alteration(Seconadary)</h6>
                 <!-- <form action="" method="post"> -->
-                <form action="/update_cost/{{ i.id }}" method="post">
+                <form action="/update_centr/{{ i.id }}" method="post">
                         {% csrf_token %}
                 <div class="top">
                     <div class="left1" style="color:white ;">
                     <div><p>Name</p></div>
-                    <input type="text" value="{{ i.name }}" name="a" >
+                    <input type="text" value="{{ i.name }}" name="name" >
                     <div><p>(Alias)</p></div>
-                    <input type="text" value="{{ i.alias }}" name="b" >
-                    <!-- <div><p>Under</p></div>
+                    <input type="text" value="{{ i.alias }}" name="alias" >
+                    <div><p>Under</p></div>
                     <select name="under" id="under">
-                        <option value="Bank Account">primary</option>
+                        <option value="{{ i.under }}">{{ i.under }}</option>
+
                         </select>
-                        </div> -->
-        
+                        </div> 
+<!--         
                         <div><p>Allocate Revenue Items</p></div>
                         <select name="c" id="c">
-                        {% if i.revenue == "No" %}
+                            <option value="{{ i.revenue }}">{{ i.revenue }}</option>
+                            <option value="No">No</option> 
+                            <option value="Yes">Yes</option>
+
+
+                             
+                        </select> -->
+                        <div><p>Use as Employee</p></div>
+                        <select name="emply" id="emply">
+                            
+
+                        {% if i.emply == "No" %}
                             <option value="No" selected>No</option>
                             {% else %} 
                             <option value="No">No</option>
                             {% endif %}
 
-                        {% if i.revenue == "Yes" %}
+                        {% if i.emply == "Yes" %}
                             <option value="Yes" selected>Yes</option>
                             {% else %} 
                             <option value="Yes">Yes</option>
                             {% endif %}
-                             
-                        </select>
-                        <div><p>Allocate Non Revenue Items</p></div>
-                        
-                        <select name="d" id="d">
-                            
-                        {% if i.nonrevenue == "No" %}
-                            <option value="No" selected>No</option>
-                            {% else %} 
-                            <option value="No">No</option>
-                            {% endif %}
-                        
-                        {% if i.nonrevenue == "Yes" %}
-                            <option value="Yes" selected>Yes</option>
-                            {% else %} 
-                            <option value="Yes">Yes</option>
-                            {% endif %}
-                            
                           
                         </select>
                     
@@ -147,4 +141,7 @@
                 </body>
 
                 {% endblock %}
-        
+
+
+
+               

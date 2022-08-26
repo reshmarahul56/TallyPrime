@@ -27,3 +27,23 @@ class Costcentr(models.Model):
     under=models.CharField(max_length=225)
     emply=models.CharField(max_length=225)
 
+class CreateCurrency(models.Model):
+    symbol =models.CharField(max_length=225)
+    formal_name=models.CharField(max_length=225)
+    ISO_code=models.CharField(max_length=225)
+    decimal_places= models.CharField(max_length=225,default=2)
+    show_in_millions =  models.CharField(max_length=225)
+    suffix_to_amount=  models.CharField(max_length=225)
+    space_symbol_amount = models.CharField(max_length=225)
+    word_after_decimal = models.CharField(max_length=225)
+    decimal_no_in_words = models.CharField(max_length=225)
+
+class CurrencyAlter(models.Model):
+    cname= models.ForeignKey( CreateCurrency,on_delete=models.CASCADE,default=1)
+    slno = models.CharField(max_length=225)
+    currencys = models.CharField(max_length=225)
+    stdrate =models.CharField(max_length=225)
+    lastvrate =models.CharField(max_length=225)
+    specirate =models.CharField(max_length=225)
+    lastvrate2 =models.CharField(max_length=225)
+    specirate2 =models.CharField(max_length=225)
