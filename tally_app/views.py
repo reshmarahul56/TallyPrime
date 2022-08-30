@@ -104,11 +104,7 @@ def create_centre(request):
     return render(request,'create_centre.html')
 
 
-def costcentr(request):
-    centr=Costcentr.objects.all()
-    context={'centr':centr,}
 
-    return render(request, 'costcentr.html',context)
 
 def primary(request,pk):
     cost=CostCategory.objects.get(id=pk)
@@ -135,7 +131,11 @@ def update_cost(request,pk):
         return redirect('costcat')
     return render(request, 'primarycost.html',)
 
+def costcentr(request):
+    centr=Costcentr.objects.all()
+    context={'centr':centr,}
 
+    return render(request, 'costcentr.html',context)
 def centr(request,pk):
     centr=Costcentr.objects.get(id=pk)
     return render(request, 'update_costcentr.html',{'i':centr})
@@ -200,7 +200,7 @@ def create_currency(request):
             suffix_to_amount=symbol_to_amount,
             space_symbol_amount=space_bt_sy,
             word_after_decimal=amount_after_decimal,
-            decimal_no_in_words=amount_in_words,
+            decimal_no_in_words = amount_in_words,
         )
         mdl_obj.save()
         return redirect('load_create_currency')

@@ -44,9 +44,10 @@
         <div class="row container-fluid w-100">
             <div class=""></div>
             <div class="">
-                <form action="/update_currency/{{ i.id }}" method="post">
+                <form action="/update_currency/{{ i.id }}" method="post" >
                     {% csrf_token %}
-        
+                    <div class="row">
+                    <div class=" col-md-6 w-50" >
                     <label for="a">Symbol</label>
                     <input type="text" class="form-control" id="a" placeholder="" value="{{ i.symbol }}" name="symbol">
                     <label for="b">Formal Name</label>
@@ -98,28 +99,21 @@
                         
                     </select>
                     {% endif %}
+                </div>
+                <div class=" col-md-6 w-50 " style="margin-top: 150px;">
                     <label for="h">Word representing amount after decimal</label>
                     <input type="text" class="form-control" id="h" placeholder="" value="{{ i.amount_after_decimal}}">
 
-                    <label for="i">No, of decimal places for amount in words</label>
-                    {% if i.decimal_no_in_words == 'No' %}
-
-                    <select name="amount_in_words" id="i" class="form-control">
-                        <option value="No">No</option> 
-                        <option value="Yes">Yes</option>
-                    </select>
-                    {% elif i.decimal_no_in_words == 'Yes' %}
-
-                    <select name="amount_in_words" id="i" class="form-control">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option> 
-                        
-                    </select>
-                    {% endif %}
+                    <label for="i">No of decimal places for amount in words</label>
+                    <input type="text" class="form-control" id="i" placeholder="" value="{{ i.decimal_no_in_words}}">
+                </div></div><br>
 
                     <div style="overflow: scroll ;max-height: 70vh; width: 100%;background-color:rgba(0,0,0,0.4); ">
-                        <Table class="w-100 table text-center" border="1">
-                            <thead>Rates Of Exchanges</thead>
+                       
+                        <Table class="w-100 table text-center" border="1"><br>
+                            <tr>
+                            <th colspan="8" style="text-align: center;">Rates Of Exchanges</th>
+                            </tr>
                             <tr>
                                 
                                 <th colspan="2">Standard</th>
@@ -140,23 +134,18 @@
                 
                             </tr>
                             <tr>
-                                <form action="save_currency_data" method="post">
-                                    {% csrf_token %}
-                             
-                               
-                
-                              </select></td>
-                              <td> <input type="text" class="w-100 from-control" name="stdr" ></td>
-                              <td> <input type="text" class="w-100 from-control" name="lvr" disabled></td>
-                              <td> <input type="text" class="w-100 from-control" name="stdr"></td>
-                              <td> <input type="text" class="w-100 from-control" name="lvr"disabled></td>
-                              <td> <input type="text" class="w-100 from-control" name="sr"disabled></td>
-                              <td> <input type="text" class="w-100 from-control" name="lvr2"></td>
-                              <td> <input type="text" class="w-100 from-control" name="sr2"disabled></td>
-                              <td> <input type="text" class="w-100 from-control" name="sr2"disabled></td>
-                              
-                            </form>
+                                
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="stdr" ></td>
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="lvr" disabled></td>
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="stdr"></td>
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="lvr"disabled></td>
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="sr"disabled></td>
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="lvr2"></td>
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="sr2"disabled></td>
+                              <td style="height:200px; vertical-align:top;"> <input type="text" class="w-100 from-control" name="sr2"disabled></td>
                             </tr>
+                            </form>
+                            
                             {% for i in obj %}
                             <tr>
                                
